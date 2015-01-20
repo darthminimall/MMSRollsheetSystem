@@ -1,0 +1,7 @@
+-----Overview----
+The purpose of this application is to create a browser based interface to keep
+track of roll, bulb, and marker use in various rooms through out the RPI
+campus. This project makes use of a LAMP stack (Linux, Apache, MySQL(MariaDB),
+and PHP) as well as the cakePHP web framework and Bootstrap.
+----Model----
+
