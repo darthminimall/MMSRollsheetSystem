@@ -2,6 +2,50 @@
 The purpose of this application is to create a browser based interface to keep
 track of roll, bulb, and marker use in various rooms through out the RPI
 campus. This project makes use of a LAMP stack (Linux, Apache, MySQL(MariaDB),
-and PHP) as well as the cakePHP web framework and Bootstrap.
+and PHP) as well as the cakePHP web framework and Bootstrap, and phpCAS for
+authentication.
 ----Model----
+Table:      buildings
+Columns:    id      - a unique integer id for the building
+            name    - string reperesnting the name of the building
+
+Table:      rooms
+Columns:    id          - a unique integer id for the room
+            name        - string representing the name of the room (of the form
+                        "DCC 308")
+            building    - the id of the building that contains the room
+            rolls       - integer representing the total number of rolls used in
+                        this room
+            pens        - integer representing the total number of pens used
+            bulbs       - integer representing the total number of bulbs used
+
+Table:      projectors
+Columns:    id          - a unique integer id for the column
+            name        - The name of the projector (usually a 3 digit number, 
+                        but stored as a string so other names can be used)
+            cur_room    - the id of the room the projector is currently in
+            snum        - serial number of the projector, stored as a string
+            mnum        - model number of the projector, stored as a string
+            rolls       - total number of rolls used by projector
+            pens        - total number of pens used by projector
+            bulbs       - total number of bulbs used by projector
+
+Table:      event_types
+Columns:    id      - a unique integer id for the event type
+            name    - the name of the event
+
+Table:      events
+Columns:    id      - a unique integer id for the event
+            data    - data associated with the event (stored as a string)
+
+Table:      users
+Columns:    name    -  a string containing the name of the user (garunteed to be
+                    unique because of CAS)
+            priv    - the privilege of the user, an integer, 1 being the least
+                    privilege
+
+Table:      pages
+Columns:    path    - the path of the page
+            priv    - the minimum priv to access the page
+----Views----
 
